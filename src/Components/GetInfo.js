@@ -50,7 +50,7 @@ function GetInfo({ handleTaskSubmit }) {
   }
 
   return (
-    <Form
+    <Form className = "infoForm"
       onSubmit={(e) => {
         changeValue({ taskName: "", time: "", date: "" });
         handleTaskSubmit(e, formElement);
@@ -80,7 +80,7 @@ function GetInfo({ handleTaskSubmit }) {
         <DatePicker value={values.date} onChange={onDateSelect} />
       </Form.Group>
 
-      <Button variant="primary" type="submit" disabled={!validateForm()}>
+      <Button className = "infoButton" variant="primary" type="submit" disabled={!validateForm()}>
         Submit
       </Button>
     </Form>

@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(36,52,71);
+  background-color: red;
 }
 
 .App {
@@ -103,4 +103,40 @@ li {
   margin-top: 5px;
   border-radius: 5px;
   padding: 20px;
+}
+
+/* GET INFO AND GET DIET STYLES---------------------------------------------------------------------------------*/
+.infoForm {
+  background-color: rgb(36,52,71) ;
+  padding: 20px;
+  border-radius: 10px;
+  color: rgb(104, 147, 201) ;
+  margin-top: 150px;
+  margin-left: 20px;
+}
+
+.dietForm {
+  background-color: rgb(104, 147, 201) ;
+  padding: 20px;
+  border-radius: 10px;
+  color: rgb(36,52,71) ;
+  margin-top: 150px;
+  margin-right: 20px;
+}
+
+.infoButton {
+  background-color: rgb(104, 147, 201) ;
+
+}
+
+.dietButton {
+  background-color: rgb(36,52,71) ;
+  margin-bottom: 7px;
+}
+
+.page{
+  background-color: rgba(59, 61, 126, 0.966);
+  height: 100vh;
+
+
 }
