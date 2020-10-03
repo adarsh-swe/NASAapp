@@ -140,3 +140,23 @@ li {
 
 
 }
+
+.login {
+  background-color: rgb(36,52,71) ;
+  padding: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 100px;
+  color: white;
+  border-radius: 10px;
+  padding-bottom: 80px;
+}
+
+.logonButton {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  margin-top: 10px;
+  margin-right: 20px;
+
+}
