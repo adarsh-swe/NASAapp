@@ -36,7 +36,7 @@ export default function Register() {
     };
 
     return (
-        <Form
+        <Form className = "login"
         onSubmit={(e) => {
             registerNew(formElement.email,formElement.password);
           }
@@ -65,7 +65,7 @@ export default function Register() {
               onChange={onPasswordChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit ">
+          <Button className = "logonButton" variant="primary" type="submit ">
             Register
           </Button>
         </Form>
