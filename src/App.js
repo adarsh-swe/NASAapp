@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormFill from "./Components/FormFill";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
+import Register from "./Components/Register";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -22,6 +23,7 @@ function App() {
   const handleCredentials = (e, formElement) => {
     e.preventDefault();
     changeCredintials(formElement);
+    console.log(formElement);
   };
   return (
     <Router>
@@ -37,6 +39,10 @@ function App() {
           <Route path="/login" exact>
             {" "}
             <Login handleCredentials={handleCredentials} />
+          </Route>
+          <Route path="/register" exact>
+            {" "}
+            <Register handleCredentials={handleCredentials} />
           </Route>
         </Switch>
       </div>
