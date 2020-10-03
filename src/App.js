@@ -1,6 +1,7 @@
 import React from "react";
 import GetInfo from "./Components/GetInfo";
 import Login from "./Components/Login";
+import Navbar from "./Components/Navbar";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
@@ -10,26 +11,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Getinfo</Link>
-            </li>
-            <li>
-              <Link to="/login">login</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navbar/>
         <Switch>
-          <Route path="/" exact>
-            {GetInfo}
-          </Route>
-          <Route path="/login" exact>
-            {Login}
-          </Route>
+          < Route path="/" component = {GetInfo} exact/>
+          <Route path="/login" component = {Login}exact/>
         </Switch>
       </div>
     </Router>
