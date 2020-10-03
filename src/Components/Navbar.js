@@ -18,6 +18,9 @@ function Navbar() {
             <li>
               <Link to="/grid">Output</Link>
             </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
           </ul>
         </nav>
         </div>

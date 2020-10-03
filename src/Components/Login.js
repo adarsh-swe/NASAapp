@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
+import { db,auth } from "../config";
+import { Link } from 'react-router-dom';
 
 export default function Login({ handleCredentials }) {
   const [formElement, changeFormElement] = useState({
     email: "",
     password: "",
   });
+  const [authorized, setauthorized] = useState(false);
 
   const onEmailChange = (event) => {
     changeFormElement({ ...formElement, email: event.target.value });
@@ -18,11 +21,27 @@ export default function Login({ handleCredentials }) {
     return formElement.email.length > 0 && formElement.password.length > 0;
   }
 
+  const login = (email, password) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log(res);
+        //if success make them go to the next page
+        setauthorized(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Form
-      onSubmit={(e) => {
-        handleCredentials(e, formElement);
-      }}
+
+    onSubmit={(e) => {
+        
+        login(formElement.email,formElement.password);
+      }
+    }
     >
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -47,51 +66,25 @@ export default function Login({ handleCredentials }) {
         />
       </Form.Group>
       <Button variant="primary" type="submit" disabled={!validateForm()}>
-        Submit
+        Login
+      </Button>
+      <h3> {authorized ? <Link to="/">Getinfo</Link>: " " }</h3>
+      <h1> OR </h1>
+      <Button variant="primary" type="submit" disabled={!authorized}>
+        Register
       </Button>
     </Form>
   );
 }
 
+
+
 /*
-  
-  const firebase = require("firebase");
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDV3uwm6YzCVit0Bn4FEfN5Ko0Z81XPF24",
-  authDomain: "nasahack-18440.firebaseapp.com",
-  databaseURL: "https://nasahack-18440.firebaseio.com",
-  projectId: "nasahack-18440",
-  storageBucket: "nasahack-18440.appspot.com",
-  messagingSenderId: "730880143922",
-  appId: "1:730880143922:web:7a6ad465a5a6d7da16822b",
-  measurementId: "G-P4CS0BFPRG",
-});
+onSubmit={(e) => {
+        
+        handleCredentials(e, formElement);
+      }
+    }
 
-const db = firebase.firestore();
-const auth = firebase.auth();
-
-const register = (email, password) => {
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((res) => {
-      console.log(res);
-
-      //if success make them go to the next page
-    })
-    .catch((err) => console.log(err));
-};
-
-const login = (email, password) => {
-  auth
-    .signInWithEmailAndPassword(email, password)
-    .then((res) => {
-      console.log(res);
-      //if success make them go to the next page
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-  */
+*/
