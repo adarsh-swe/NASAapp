@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form} from "react-bootstrap";
-import { db,auth } from "../config";
-import { Link } from 'react-router-dom';
+import { Button, Form } from "react-bootstrap";
+import { db, auth } from "../config";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 export default function Login({ handleCredentials }) {
+  const history = useHistory();
   const [formElement, changeFormElement] = useState({
     email: "",
     password: "",
@@ -27,21 +28,25 @@ export default function Login({ handleCredentials }) {
       .then((res) => {
         console.log(res);
         //if success make them go to the next page
+
         setauthorized(true);
+        console.log("Working");
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);
+        alert("User does not exist");
+        changeFormElement({ email: "", password: "" });
+        history.push("/login");
       });
   };
 
   return (
     <Form
-
-    onSubmit={(e) => {
-        
-        login(formElement.email,formElement.password);
-      }
-    }
+      onSubmit={(e) => {
+        e.preventDefault();
+        login(formElement.email, formElement.password);
+      }}
     >
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -68,7 +73,7 @@ export default function Login({ handleCredentials }) {
       <Button variant="primary" type="submit" disabled={!validateForm()}>
         Login
       </Button>
-      <h3> {authorized ? <Link to="/">Getinfo</Link>: " " }</h3>
+      <h3> {authorized ? <Link to="/">Getinfo</Link> : " "}</h3>
       <h1> OR </h1>
       <Button variant="primary" type="submit" disabled={!authorized}>
         Register
@@ -76,8 +81,6 @@ export default function Login({ handleCredentials }) {
     </Form>
   );
 }
-
-
 
 /*
 
