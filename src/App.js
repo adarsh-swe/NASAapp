@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 function App() {
   const [tasks, changeTasks] = useState([]);
   const [diet, changeDiet] = useState({});
+  const [credentials, changeCredintials] = useState({});
   const handleTaskSubmit = (e, formElement) => {
     e.preventDefault();
     changeTasks([...tasks, formElement]);
@@ -16,6 +17,10 @@ function App() {
   const handleDietSubmit = (e, dietElement) => {
     e.preventDefault();
     changeDiet(dietElement);
+  };
+  const handleCredentials = (e, formElement) => {
+    e.preventDefault();
+    changeCredintials(formElement);
   };
   return (
     <Router>
@@ -28,7 +33,10 @@ function App() {
               handleDietSubmit={handleDietSubmit}
             />
           </Route>
-          <Route path="/login" component={Login} exact />
+          <Route path="/login" exact>
+            {" "}
+            <Login handleCredentials={handleCredentials} />
+          </Route>
         </Switch>
       </div>
     </Router>

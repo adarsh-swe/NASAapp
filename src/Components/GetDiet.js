@@ -35,6 +35,13 @@ function GetDiet({ handleDietSubmit }) {
     });
     changeValue({ ...values, dinner: time });
   };
+  function validateForm() {
+    return (
+      dietElement.dinner.length > 0 &&
+      dietElement.breakfast.length > 0 &&
+      dietElement.lunch.length > 0
+    );
+  }
   return (
     <Form
       onSubmit={(e) => {
@@ -69,7 +76,7 @@ function GetDiet({ handleDietSubmit }) {
         </Form.Group>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={!validateForm()}>
         Submit
       </Button>
     </Form>

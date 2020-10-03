@@ -40,6 +40,15 @@ function GetInfo({ handleTaskSubmit }) {
     changeValue({ ...values, taskName: event.target.value });
   };
 
+  function validateForm() {
+    return (
+      formElement.taskName.length > 0 &&
+      formElement.startTime.length > 0 &&
+      formElement.date.length > 0 &&
+      formElement.endTime.length > 0
+    );
+  }
+
   return (
     <Form
       onSubmit={(e) => {
@@ -71,7 +80,7 @@ function GetInfo({ handleTaskSubmit }) {
         <DatePicker value={values.date} onChange={onDateSelect} />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={!validateForm()}>
         Submit
       </Button>
     </Form>
