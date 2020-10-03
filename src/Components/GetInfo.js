@@ -1,53 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Col, Row } from "react-bootstrap";
+import { TimePicker, DatePicker } from "antd";
+import "antd/dist/antd.css";
 
-function GetInfo() {
+function GetInfo({ handleTaskSubmit }) {
+  const { RangePicker } = TimePicker;
+  const [formElement, changeFormElement] = useState({
+    taskName: "",
+    startTime: "",
+    endTime: "",
+    date: "",
+  });
+  const [values, changeValue] = useState({
+    taskName: "",
+    time: "",
+    date: "",
+  });
+  const onTimeSelect = (time, timeString) => {
+    changeFormElement({
+      ...formElement,
+      startTime: timeString[0],
+      endTime: timeString[1],
+    });
+    changeValue({ ...values, time: time });
+  };
+  const onDateSelect = (date, dateString) => {
+    changeFormElement({
+      ...formElement,
+      date: dateString,
+    });
+    changeValue({ ...values, date: date });
+  };
+
+  const onTaskSelect = (event) => {
+    changeFormElement({
+      ...formElement,
+      taskName: event.target.value,
+    });
+    changeValue({ ...values, taskName: event.target.value });
+  };
+
   return (
-    <Form>
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Task Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Task" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-      </Form.Row>
-
-      <Form.Group controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+    <Form
+      onSubmit={(e) => {
+        changeValue({ taskName: "", time: "", date: "" });
+        handleTaskSubmit(e, formElement);
+      }}
+    >
+      <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Label>Task Name</Form.Label>
+        <Form.Control
+          type="text"
+          value={values.taskName}
+          onChange={onTaskSelect}
+          placeholder="Enter Task"
+        />
       </Form.Group>
 
-      <Form.Group controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
+      <Form.Group className="mb-0">
+        <Form.Label>Pick time</Form.Label>
+      </Form.Group>
+      <Form.Group>
+        <RangePicker value={values.time} onChange={onTimeSelect} />
       </Form.Group>
 
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Control as="select" defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-      </Form.Row>
-
-      <Form.Group id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+      <Form.Group className="mb-0">
+        <Form.Label>Select date</Form.Label>
+      </Form.Group>
+      <Form.Group>
+        <DatePicker value={values.date} onChange={onDateSelect} />
       </Form.Group>
 
       <Button variant="primary" type="submit">
