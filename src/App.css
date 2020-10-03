@@ -90,3 +90,14 @@ li {
   text-decoration: none;
   color: white;
 }
+
+/* GRID CSS STYLES BELOW---------------------------------------------------------------------------------*/
+.col {
+  background-color: rgb(36,52,71);
+  text-align: center;
+  outline: rgb(45, 120, 211);
+  color: #f2f2f2;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 20px;
+}

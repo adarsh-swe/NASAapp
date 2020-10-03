@@ -15,6 +15,9 @@ function Navbar() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/grid">Output</Link>
+            </li>
           </ul>
         </nav>
         </div>
