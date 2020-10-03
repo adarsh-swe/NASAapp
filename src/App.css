@@ -6,6 +6,16 @@ body {
   text-align: center;
 }
 
+.page{
+  /*background-color: rgba(59, 61, 126, 0.966);*/
+  background-image: url(Images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -134,13 +144,8 @@ li {
   margin-bottom: 7px;
 }
 
-.page{
-  background-color: rgba(59, 61, 126, 0.966);
-  height: 100vh;
 
-
-}
-
+/* Login and register STYLES---------------------------------------------------------------------------------*/
 .login {
   background-color: rgb(36,52,71) ;
   padding: 50px;
