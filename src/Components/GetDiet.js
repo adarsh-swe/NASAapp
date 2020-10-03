@@ -43,7 +43,7 @@ function GetDiet({ handleDietSubmit }) {
     );
   }
   return (
-    <Form
+    <Form className = "dietForm"
       onSubmit={(e) => {
         changeValue({ breakfast: "", lunch: "", dinner: "" });
         handleDietSubmit(e, dietElement);
@@ -76,7 +76,7 @@ function GetDiet({ handleDietSubmit }) {
         </Form.Group>
       </Form.Group>
 
-      <Button variant="primary" type="submit" disabled={!validateForm()}>
+      <Button  variant="primary" type="submit" disabled={!validateForm()} className = "dietButton">
         Submit
       </Button>
     </Form>
