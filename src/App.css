@@ -99,5 +99,8 @@ li {
   color: #f2f2f2;
   margin-right: 5px;
   margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
   padding: 20px;
 }
