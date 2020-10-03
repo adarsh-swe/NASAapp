@@ -47,7 +47,7 @@ function GetInfo({ handleTaskSubmit }) {
         handleTaskSubmit(e, formElement);
       }}
     >
-      <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Group controlId="formGridEmail">
         <Form.Label>Task Name</Form.Label>
         <Form.Control
           type="text"
