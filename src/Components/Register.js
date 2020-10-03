@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Form} from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
 import { db,auth } from "../config";
 
 
 export default function Register() {
+    const history = useHistory();
     const [formElement, changeFormElement] = useState({
         email: "",
         password: "",
@@ -27,17 +28,23 @@ export default function Register() {
           .createUserWithEmailAndPassword(email, password)
           .then((res) => {
             console.log(res);
-            console.log("tt mZ Xnnd")
-    
+            console.log("Working");
+            history.push("/");
             //if success make them go to the next page
 
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            alert("Invalid email/password or user already exists");
+            changeFormElement({ email: "", password: "" });
+            history.push("/register");
+          });
     };
 
     return (
         <Form className = "login"
         onSubmit={(e) => {
+            e.preventDefault();
             registerNew(formElement.email,formElement.password);
           }
         }
