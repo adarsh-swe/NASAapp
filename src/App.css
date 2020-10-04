@@ -137,9 +137,7 @@ a:hover {
   border-radius: 20px;
   color: rgb(104, 147, 201);
   margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20vw;
+  margin-left: 20px;
 }
 
 .dietForm {
@@ -158,11 +156,6 @@ a:hover {
 .dietButton {
   background-color: rgb(36, 52, 71);
   margin-bottom: 7px;
-}
-
-.task {
-  width: 25%;
-  padding: 10px 
 }
 
 /* Login and register STYLES---------------------------------------------------------------------------------*/
