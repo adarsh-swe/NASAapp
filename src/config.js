@@ -42,37 +42,3 @@ export const update = (events, food) => {
       console.error(error);
     });
 };
-
-const days_required_to_enter = () => {
-  db.collection("users")
-    .doc(auth.currentUser.uid)
-    .get()
-    .then((res) => {
-      let { schedule, date } = res.data();
-      const prev = new Date(date);
-      const obj = new Date();
-      const today = new Date(obj.toDateString());
-      const diff = (today.getTime() - prev.getTime()) / 86400000;
-
-      var i = 0;
-      for (; i < schedule.length; i++) {
-        if (schedule[i][0] == diff) {
-          break;
-        }
-      }
-
-      schedule = schedule.slice(i);
-      schedule.forEach((x) => {
-        x[0] -= 1;
-      });
-
-      return {
-        next_n_days_to_ask: 3 - diff,
-        events: schedule,
-      };
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-};
-export default days_required_to_enter;
