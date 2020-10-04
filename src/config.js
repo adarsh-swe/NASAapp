@@ -19,13 +19,25 @@ export const update = (events, food) => {
   const schedule = algo(events, food);
   const date = new Date();
 
+  const arr = [];
+  schedule.forEach((x) => {
+    arr.push({
+      day: x[0],
+      startTime: x[1],
+      endTime: x[2],
+      taskName: x[3],
+    });
+  });
   db.collection("users")
-    .doc(auth().currentUser.uid)
+    .doc(auth.currentUser.uid)
     .set({
-      schedule: schedule,
+      schedule: arr,
       date: date.toDateString(),
     })
-    .then(() => {})
+    .then(() => {
+      console.log("added successfully");
+      console.log(arr);
+    })
     .catch(function (error) {
       console.error(error);
     });
