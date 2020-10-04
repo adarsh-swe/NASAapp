@@ -15,13 +15,50 @@ export const db = firebase.firestore();
 export const auth = firebase.auth();
 
 export const update = (schedule) => {
+  const date = new Date();
+
   db.collection("users")
     .doc(auth().currentUser.uid)
-    .set(schedule)
+    .set({
+      schedule: schedule,
+      date: date.toDateString(),
+    })
     .then(() => {})
     .catch(function (error) {
       console.error(error);
     });
 };
 
-export const 
+export const days_required_to_enter = () => {
+  db.collection("users")
+    .doc(auth().currentUser.uid)
+    .get()
+    .then((res) => {
+      const { schedule, date } = res.data();
+      const today = new Date();
+      const prev = new Date(date);
+      const obj = new Date();
+      const today = new Date(obj.toDateString());
+      const diff = (today.getTime() - prev.getTime()) / 86400000;
+
+      var i = 0;
+      for (; i < schedule.length; i++) {
+        if (schedule[i][0] == diff) {
+          break;
+        }
+      }
+
+      schedule = schedule.slice(i);
+      schedule.forEach((x) => {
+        x[0] -= 1;
+      });
+
+      return {
+        next_n_days_to_ask: 3 - diff,
+        events: schedule,
+      };
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+};
