@@ -85,10 +85,13 @@ function App() {
         <Switch>
           <Route path="/" exact>
             {user ? (
-              <FormFill
-                handleTaskSubmit={handleTaskSubmit}
-                handleDietSubmit={handleDietSubmit}
-              />
+              <div>
+                <FormFill
+                  handleTaskSubmit={handleTaskSubmit}
+                  handleDietSubmit={handleDietSubmit}
+                />
+                <button className = "navbar" onClick={get_schedule}>get schedule</button>
+              </div>
             ) : (
               <Login handleCredentials={handleCredentials} />
             )}
@@ -104,7 +107,6 @@ function App() {
             <Register handleCredentials={handleCredentials} />
           </Route>
         </Switch>
-            <button className = "navbar" onClick={get_schedule}>get schedule</button>
 
       </div>
 
