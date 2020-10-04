@@ -26,11 +26,12 @@ export default function Login({ handleCredentials }) {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log(res);
         //if success make them go to the next page
 
         setauthorized(true);
         console.log("Working");
+
+        handleCredentials(formElement);
         history.push("/");
       })
       .catch((err) => {
@@ -42,7 +43,8 @@ export default function Login({ handleCredentials }) {
   };
 
   return (
-    <Form className = "login"
+    <Form
+      className="login"
       onSubmit={(e) => {
         e.preventDefault();
         login(formElement.email, formElement.password);
@@ -70,12 +72,13 @@ export default function Login({ handleCredentials }) {
           onChange={onPasswordChange}
         />
       </Form.Group>
-      <Button className = "logonButton" variant="primary" type="submit" disabled={!validateForm()}>
+      <Button
+        className="logonButton"
+        variant="primary"
+        type="submit"
+        disabled={!validateForm()}
+      >
         Login
-      </Button>
-      <h3> {authorized ? <Link to="/">Getinfo</Link> : " "}</h3>
-      <Button className = "logonButton" variant="primary" type="submit" disabled={!authorized}>
-        Register
       </Button>
     </Form>
   );

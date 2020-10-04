@@ -5,7 +5,8 @@ import Navbar from "./Components/Navbar";
 import Register from "./Components/Register";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { auth } from "./config";
 
 function App() {
   const [tasks, changeTasks] = useState([]);
@@ -19,21 +20,26 @@ function App() {
     e.preventDefault();
     changeDiet(dietElement);
   };
-  const handleCredentials = (e, formElement) => {
-    e.preventDefault();
+
+  const handleCredentials = (formElement) => {
     changeCredintials(formElement);
-    console.log(formElement);
   };
+
+  const user = auth.currentUser;
   return (
     <Router>
       <div className="page">
         <Navbar />
         <Switch>
           <Route path="/" exact>
-            <FormFill
-              handleTaskSubmit={handleTaskSubmit}
-              handleDietSubmit={handleDietSubmit}
-            />
+            {user ? (
+              <FormFill
+                handleTaskSubmit={handleTaskSubmit}
+                handleDietSubmit={handleDietSubmit}
+              />
+            ) : (
+              <Login handleCredentials={handleCredentials} />
+            )}
           </Route>
           <Route path="/login" exact>
             <Login handleCredentials={handleCredentials} />

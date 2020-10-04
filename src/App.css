@@ -61,6 +61,12 @@ body {
   margin: 0px;
   margin-bottom: 20px;
 }
+.show {
+  visibility: "visible";
+}
+.rem {
+  display: "none";
+}
 
 ul {
   list-style-type: none;
