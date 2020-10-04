@@ -13,3 +13,15 @@ firebase.initializeApp({
 
 export const db = firebase.firestore();
 export const auth = firebase.auth();
+
+export const update = (schedule) => {
+  db.collection("users")
+    .doc(auth().currentUser.uid)
+    .set(schedule)
+    .then(() => {})
+    .catch(function (error) {
+      console.error(error);
+    });
+};
+
+export const 
