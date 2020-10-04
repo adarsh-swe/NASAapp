@@ -104,10 +104,10 @@ function App() {
             <Register handleCredentials={handleCredentials} />
           </Route>
         </Switch>
+            <button className = "navbar" onClick={get_schedule}>get schedule</button>
+
       </div>
-      <div>
-        <button onClick={get_schedule}>get schedule</button>
-      </div>
+
     </Router>
   );
 }
