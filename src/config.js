@@ -35,7 +35,6 @@ export const days_required_to_enter = () => {
     .get()
     .then((res) => {
       const { schedule, date } = res.data();
-      const today = new Date();
       const prev = new Date(date);
       const obj = new Date();
       const today = new Date(obj.toDateString());
