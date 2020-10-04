@@ -43,7 +43,8 @@ function GetDiet({ handleDietSubmit }) {
     );
   }
   return (
-    <Form className = "dietForm"
+    <Form
+      className="dietForm"
       onSubmit={(e) => {
         changeValue({ breakfast: "", lunch: "", dinner: "" });
         handleDietSubmit(e, dietElement);
@@ -54,7 +55,12 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Breakfast</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.breakfast} onChange={onBreakfast} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={values.breakfast}
+            onChange={onBreakfast}
+          />
         </Form.Group>
       </Form.Group>
 
@@ -63,7 +69,12 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Lunch</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.lunch} onChange={onLunch} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={values.lunch}
+            onChange={onLunch}
+          />
         </Form.Group>
       </Form.Group>
 
@@ -72,11 +83,21 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Dinner</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.dinner} onChange={onDinner} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={values.dinner}
+            onChange={onDinner}
+          />
         </Form.Group>
       </Form.Group>
 
-      <Button  variant="primary" type="submit" disabled={!validateForm()} className = "dietButton">
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!validateForm()}
+        className="dietButton"
+      >
         Submit
       </Button>
     </Form>

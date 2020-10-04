@@ -50,7 +50,8 @@ function GetInfo({ handleTaskSubmit }) {
   }
 
   return (
-    <Form className = "infoForm"
+    <Form
+      className="infoForm"
       onSubmit={(e) => {
         changeValue({ taskName: "", time: "", date: "" });
         handleTaskSubmit(e, formElement);
@@ -70,7 +71,12 @@ function GetInfo({ handleTaskSubmit }) {
         <Form.Label>Pick time</Form.Label>
       </Form.Group>
       <Form.Group>
-        <RangePicker value={values.time} onChange={onTimeSelect} />
+        <RangePicker
+          minuteStep={60}
+          secondStep={60}
+          value={values.time}
+          onChange={onTimeSelect}
+        />
       </Form.Group>
 
       <Form.Group className="mb-0">
@@ -80,7 +86,12 @@ function GetInfo({ handleTaskSubmit }) {
         <DatePicker value={values.date} onChange={onDateSelect} />
       </Form.Group>
 
-      <Button className = "infoButton" variant="primary" type="submit" disabled={!validateForm()}>
+      <Button
+        className="infoButton"
+        variant="primary"
+        type="submit"
+        disabled={!validateForm()}
+      >
         Submit
       </Button>
     </Form>
