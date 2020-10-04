@@ -10,12 +10,12 @@ import { auth } from "./config";
 import GetInfo from "./Components/GetInfo";
 
 function App() {
-  const [tasks, changeTasks] = useState({});
+  const [tasks, changeTasks] = useState([]);
   const [diet, changeDiet] = useState({});
   const [credentials, changeCredintials] = useState({});
 
   const handleFormSubmit = (formElement, dietElement) => {
-    changeTasks(formElement);
+    changeTasks([...tasks, formElement]);
     changeDiet(dietElement);
   };
 
