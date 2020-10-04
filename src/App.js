@@ -96,9 +96,11 @@ function App() {
               <Login handleCredentials={handleCredentials} />
             )}
           </Route>
+          <div className="otherPage">
           <Route path="/grid" exact>
             {user ? <Grid /> : <Login handleCredentials={handleCredentials} />}
           </Route>
+           </div>
           <Route path="/login" exact>
             <Login handleCredentials={handleCredentials} />
           </Route>
