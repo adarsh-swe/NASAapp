@@ -187,3 +187,41 @@ a:hover {
   margin-right: auto;
   border-radius: 10px !important;
 }
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+  background-color: rgb(36, 52, 71);
+  overflow: hidden;
+  position: absolute;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  height: 5vh;
+  width: auto;
+  margin-top: 40px;
+  border-radius: 10px;
+  padding-left: auto;
+  padding-right: auto;
+  color: white;
+  text-align: center;
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
