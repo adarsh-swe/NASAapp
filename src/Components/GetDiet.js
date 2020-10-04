@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { TimePicker } from "antd";
 import "antd/dist/antd.css";
+import * as moment from "moment";
 
 function GetDiet({ handleDietSubmit }) {
   const [dietElement, changeDietElement] = useState({
@@ -9,7 +10,7 @@ function GetDiet({ handleDietSubmit }) {
     lunch: "",
     dinner: "",
   });
-  const [values, changeValue] = useState({
+  const [dietValues, changeDietValues] = useState({
     breakfast: "",
     lunch: "",
     dinner: "",
@@ -19,22 +20,23 @@ function GetDiet({ handleDietSubmit }) {
       ...dietElement,
       breakfast: timeString,
     });
-    changeValue({ ...values, breakfast: time });
+    changeDietValues({ ...dietValues, breakfast: time });
   };
   const onLunch = (time, timeString) => {
     changeDietElement({
       ...dietElement,
       lunch: timeString,
     });
-    changeValue({ ...values, lunch: time });
+    changeDietValues({ ...dietValues, lunch: time });
   };
   const onDinner = (time, timeString) => {
     changeDietElement({
       ...dietElement,
       dinner: timeString,
     });
-    changeValue({ ...values, dinner: time });
+    changeDietValues({ ...dietValues, dinner: time });
   };
+
   function validateForm() {
     return (
       dietElement.dinner.length > 0 &&
@@ -43,9 +45,10 @@ function GetDiet({ handleDietSubmit }) {
     );
   }
   return (
-    <Form className = "dietForm"
+    <Form
+      className="dietForm"
       onSubmit={(e) => {
-        changeValue({ breakfast: "", lunch: "", dinner: "" });
+        changeDietValues({ breakfast: "", lunch: "", dinner: "" });
         handleDietSubmit(e, dietElement);
       }}
     >
@@ -54,7 +57,12 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Breakfast</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.breakfast} onChange={onBreakfast} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={dietValues.breakfast}
+            onChange={onBreakfast}
+          />
         </Form.Group>
       </Form.Group>
 
@@ -63,7 +71,12 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Lunch</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.lunch} onChange={onLunch} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={dietValues.lunch}
+            onChange={onLunch}
+          />
         </Form.Group>
       </Form.Group>
 
@@ -72,11 +85,21 @@ function GetDiet({ handleDietSubmit }) {
           <Form.Label>Dinner</Form.Label>
         </Form.Group>
         <Form.Group>
-          <TimePicker value={values.dinner} onChange={onDinner} />
+          <TimePicker
+            minuteStep={60}
+            secondStep={60}
+            value={dietValues.dinner}
+            onChange={onDinner}
+          />
         </Form.Group>
       </Form.Group>
 
-      <Button  variant="primary" type="submit" disabled={!validateForm()} className = "dietButton">
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!validateForm()}
+        className="dietButton"
+      >
         Submit
       </Button>
     </Form>

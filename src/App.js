@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FormFill from "./Components/FormFill";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
 import Grid from "./Components/Grid";
@@ -8,17 +7,15 @@ import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { auth } from "./config";
+import GetInfo from "./Components/GetInfo";
 
 function App() {
-  const [tasks, changeTasks] = useState([]);
+  const [tasks, changeTasks] = useState({});
   const [diet, changeDiet] = useState({});
   const [credentials, changeCredintials] = useState({});
-  const handleTaskSubmit = (e, formElement) => {
-    e.preventDefault();
-    changeTasks([...tasks, formElement]);
-  };
-  const handleDietSubmit = (e, dietElement) => {
-    e.preventDefault();
+
+  const handleFormSubmit = (formElement, dietElement) => {
+    changeTasks(formElement);
     changeDiet(dietElement);
   };
 
@@ -34,21 +31,13 @@ function App() {
         <Switch>
           <Route path="/" exact>
             {user ? (
-              <FormFill
-                handleTaskSubmit={handleTaskSubmit}
-                handleDietSubmit={handleDietSubmit}
-              />
+              <GetInfo handleFormSubmit={handleFormSubmit} />
             ) : (
               <Login handleCredentials={handleCredentials} />
             )}
           </Route>
           <Route path="/grid" exact>
-            {user ? (
-              <Grid
-              />
-            ) : (
-              <Login handleCredentials={handleCredentials} />
-            )}
+            {user ? <Grid /> : <Login handleCredentials={handleCredentials} />}
           </Route>
           <Route path="/login" exact>
             <Login handleCredentials={handleCredentials} />
