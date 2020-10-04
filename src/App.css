@@ -6,14 +6,14 @@ body {
   text-align: center;
 }
 
-.page{
+.page {
   /*background-color: rgba(59, 61, 126, 0.966);*/
-  background-image: url(Images/background.jpg);
+  background-color: #bd4f6c;
+  background-image: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
+
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-
-
 }
 
 .App-logo {
@@ -84,7 +84,6 @@ li {
   text-decoration: none;
   color: #f2f2f2;
   font-size: 17px;
-  
 }
 
 /* Change the color of links on hover */
@@ -96,14 +95,14 @@ li {
 
 /* Add a color to the active/current link */
 .topnav li.active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   text-decoration: none;
   color: white;
 }
 
 /* GRID CSS STYLES BELOW---------------------------------------------------------------------------------*/
 .col {
-  background-color: rgb(36,52,71);
+  background-color: rgb(36, 52, 71);
   text-align: center;
   outline: rgb(45, 120, 211);
   color: #f2f2f2;
@@ -117,37 +116,35 @@ li {
 
 /* GET INFO AND GET DIET STYLES---------------------------------------------------------------------------------*/
 .infoForm {
-  background-color: rgb(36,52,71) ;
+  background-color: rgb(36, 52, 71);
   padding: 20px;
   border-radius: 10px;
-  color: rgb(104, 147, 201) ;
+  color: rgb(104, 147, 201);
   margin-top: 150px;
   margin-left: 20px;
 }
 
 .dietForm {
-  background-color: rgb(104, 147, 201) ;
+  background-color: rgb(104, 147, 201);
   padding: 20px;
   border-radius: 10px;
-  color: rgb(36,52,71) ;
+  color: rgb(36, 52, 71);
   margin-top: 150px;
   margin-right: 20px;
 }
 
 .infoButton {
-  background-color: rgb(104, 147, 201) ;
-
+  background-color: rgb(104, 147, 201);
 }
 
 .dietButton {
-  background-color: rgb(36,52,71) ;
+  background-color: rgb(36, 52, 71);
   margin-bottom: 7px;
 }
 
-
 /* Login and register STYLES---------------------------------------------------------------------------------*/
 .login {
-  background-color: rgb(36,52,71) ;
+  background-color: rgb(36, 52, 71);
   padding: 50px;
   margin-left: 400px;
   margin-right: 400px;
@@ -163,5 +160,4 @@ li {
   padding: 14px 16px;
   margin-top: 10px;
   margin-right: 20px;
-
 }
