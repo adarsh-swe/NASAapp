@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormFill from "./Components/FormFill";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
+import Grid from "./Components/Grid";
 import Register from "./Components/Register";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -36,6 +37,14 @@ function App() {
               <FormFill
                 handleTaskSubmit={handleTaskSubmit}
                 handleDietSubmit={handleDietSubmit}
+              />
+            ) : (
+              <Login handleCredentials={handleCredentials} />
+            )}
+          </Route>
+          <Route path="/grid" exact>
+            {user ? (
+              <Grid
               />
             ) : (
               <Login handleCredentials={handleCredentials} />
