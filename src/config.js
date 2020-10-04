@@ -1,4 +1,5 @@
 const firebase = require("firebase");
+const algo = require("./algo").builder;
 
 firebase.initializeApp({
   apiKey: "AIzaSyDV3uwm6YzCVit0Bn4FEfN5Ko0Z81XPF24",
@@ -14,7 +15,8 @@ firebase.initializeApp({
 export const db = firebase.firestore();
 export const auth = firebase.auth();
 
-export const update = (schedule) => {
+export const update = (events, food) => {
+  const schedule = algo(events, food);
   const date = new Date();
 
   db.collection("users")

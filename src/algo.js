@@ -2,13 +2,13 @@ const getRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-const builder = () => {
-  const events = [];
-  const food = [
-    [8, 9],
-    [11, 12],
-    [19, 20],
-  ];
+export const builder = (events, food) => {
+  // const events = [];
+  // const food = [
+  //   [8, 9],
+  //   [11, 12],
+  //   [19, 20],
+  // ];
 
   for (var i = 0; i < 3; i++) {
     events.push([i, food[0][0], food[0][1], "BREAKFAST"]);
@@ -122,19 +122,19 @@ const builder = () => {
   };
 
   const open_intervals = get_open_intervals(events, food);
-  console.log("available slots in 72hrs");
-  console.log(open_intervals);
+  // console.log("available slots in 72hrs");
+  // console.log(open_intervals);
 
   combinations(0, [], open_intervals);
 
-  console.log("\n\n\n");
-  console.log("added");
+  // console.log("\n\n\n");
+  // console.log("added");
 
-  d[high].forEach((x) => {
-    console.log(x);
-  });
+  // d[high].forEach((x) => {
+  //   console.log(x);
+  // });
 
-  console.log("\n\n\n");
+  // console.log("\n\n\n");
 
   const final = events.concat(d[high]);
   final.sort((a, b) => {
@@ -168,9 +168,9 @@ const builder = () => {
   return final;
 };
 
-const test = builder();
+// const test = builder();
 
-console.log("Final schedule");
-test.forEach((x) => {
-  console.log(x);
-});
+// console.log("Final schedule");
+// test.forEach((x) => {
+//   console.log(x);
+// });
