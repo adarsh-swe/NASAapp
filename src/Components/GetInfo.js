@@ -96,7 +96,7 @@ function GetInfo({ handleFormSubmit }) {
     >
       <Form.Group controlId="formGridEmail">
         <Form.Label>Task Name</Form.Label>
-        <Form.Control
+        <Form.Control size = "sm"
           type="text"
           value={values.taskName}
           onChange={onTaskSelect}
