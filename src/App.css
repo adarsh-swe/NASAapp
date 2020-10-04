@@ -181,10 +181,9 @@ a:hover {
 .card {
   margin-top: 50px;
   margin-bottom: 20px;
-  background: rgb(36, 52, 71) !important; 
-  color: rgb(255, 255, 255) !important; 
+  background: rgb(36, 52, 71) !important;
+  color: rgb(255, 255, 255) !important;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px !important;
-
 }

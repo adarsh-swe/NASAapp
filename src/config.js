@@ -43,12 +43,12 @@ export const update = (events, food) => {
     });
 };
 
-export const days_required_to_enter = () => {
+const days_required_to_enter = () => {
   db.collection("users")
-    .doc(auth().currentUser.uid)
+    .doc(auth.currentUser.uid)
     .get()
     .then((res) => {
-      const { schedule, date } = res.data();
+      let { schedule, date } = res.data();
       const prev = new Date(date);
       const obj = new Date();
       const today = new Date(obj.toDateString());
@@ -75,3 +75,4 @@ export const days_required_to_enter = () => {
       console.error(error);
     });
 };
+export default days_required_to_enter;
