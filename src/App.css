@@ -106,6 +106,16 @@ li {
   color: white;
 }
 
+a {
+  color: #ffffff !important ;
+  font-size: 18px;
+  padding: 0;
+}
+
+a:hover {
+  color: black !important;
+}
+
 /* GRID CSS STYLES BELOW---------------------------------------------------------------------------------*/
 .col {
   background-color: rgb(36, 52, 71);

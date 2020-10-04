@@ -11,10 +11,10 @@ function Navbar() {
         <nav>
           <ul>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" style={{ textDecoration: 'none'}}>Login</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register" style={{ textDecoration: 'none'}}>Register</Link>
             </li>
           </ul>
         </nav>
@@ -23,10 +23,10 @@ function Navbar() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Add Event</Link>
+              <Link to="/"style={{ textDecoration: 'none'}}>Add Event</Link>
             </li>
             <li>
-              <Link to="/grid">Schedule</Link>
+              <Link to="/grid"style={{ textDecoration: 'none'}}>Schedule</Link>
             </li>
           </ul>
         </nav>
